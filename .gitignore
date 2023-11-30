@@ -1,0 +1,7 @@
+/hello_world/node_modules/
+./.idea
+/.idea/modules.xml
+/.idea/nosql2h23-dentist.iml
+/.idea/jsLibraryMappings.xml
+/.idea/vcs.xml
+/.idea/.gitignore
