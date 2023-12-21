@@ -12,7 +12,7 @@ function LoginButton({theme, children, ...props}: LoginButtonProps) {
   }
 
   return (
-    <button {...props} className={`${styles[theme]} font-poppins rounded-3xl w-full p-2`}>
+    <button {...props} className={`${styles[theme]} font-poppins rounded-3xl w-8/12 p-2 text-lg`}>
       {children}
     </button>
   )

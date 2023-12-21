@@ -1,12 +1,16 @@
 // import { useState } from 'react'
 import './App.css'
+import {BrowserRouter} from "react-router-dom";
+import AppRouter from "./Router/AppRouter.tsx";
 
 
 function App() {
 
   return (
     <>
-      <h1 className="rounded">Header</h1>
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
     </>
   )
 }

@@ -16,7 +16,8 @@ export default {
       base3: "#5CC9A8",
       white: "#FFFFFF",
       darkPurple: "#202660",
-      additional: "#A7D7C5"
+      additional: "#A7D7C5",
+      black: "#000000"
     }
   },
   plugins: [],
