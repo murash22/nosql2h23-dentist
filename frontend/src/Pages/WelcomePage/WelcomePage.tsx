@@ -1,9 +1,16 @@
 import Header from "../../Widgets/Header/Header.tsx";
 import LoginButton from "../../Components/LoginButton/LoginButton.tsx";
 import FormCard from "../../Components/FormCard/FormCard.tsx";
+import {FormEvent} from "react";
+import {useNavigate} from "react-router-dom";
 
 
 function WelcomePage() {
+  const navigate = useNavigate()
+  const onClick = (e: FormEvent) => {
+    e.preventDefault()
+    navigate('/login')
+  }
 
   return (
     <>
@@ -22,10 +29,10 @@ function WelcomePage() {
           <p className="my-10 text-white text-2xl">
             Discover a brighter, healthier smile with us. Our experienced team is dedicated to providing top-quality dental care in a comfortable environment. We offer a range of services tailored to your unique needs. Schedule your appointment today and let us take care of your smile.
           </p>
-          <div className="flex flex-col justify-evenly h-32 items-center">
-            <LoginButton theme="primary" children="Log in"></LoginButton>
+          <form className="flex flex-col justify-evenly h-32 items-center">
+            <LoginButton theme="primary" children="Log in" onClick={onClick}/>
             {/*<LoginButton theme="secondary" children="Sign Up"></LoginButton>*/}
-          </div>
+          </form>
         </FormCard>
         <div className="">
           <img className="bg-base1 rounded-full " src="src/assets/doctor-img1.png" alt=""/>

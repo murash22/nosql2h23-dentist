@@ -1,8 +1,8 @@
 import {ReactNode} from "react";
 
 interface HeaderProps {
-  profileButton?: ReactNode | null;
-  signOutButton?: ReactNode | null;
+  profileButton?: ReactNode;
+  signOutButton?: ReactNode;
 }
 
 function Header({profileButton=null, signOutButton=null} : HeaderProps) {
