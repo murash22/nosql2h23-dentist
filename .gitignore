@@ -5,5 +5,4 @@
 /.idea/jsLibraryMappings.xml
 /.idea/vcs.xml
 /.idea/.gitignore
-*.env
 /backend/node_modules

@@ -3,6 +3,7 @@ import * as dotenv from "dotenv";
 import mongoose from "mongoose";
 import router from "./router";
 import cors from "cors";
+import { dataInitializer } from "./init_data/init_data";
 
 dotenv.config()
 
@@ -21,7 +22,8 @@ const start = async () => {
         db.on('error', (error) => console.error(error))
         db.once('open', () => console.log("connected to db"))
     
-
+        await dataInitializer.removeAll()
+        await dataInitializer.initializeAllData()
         app.listen(PORT, () => console.log("Server started"))
     } catch (e) {
         console.log(e)
