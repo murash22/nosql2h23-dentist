@@ -39,10 +39,10 @@ function PatientPage() {
 
   const onChange = (event: any) => {
     const target = event.target
-    const comparators = {
-      'date': (x) => x.date.includes(new Date(target.value).toLocaleString('ru-RU', timeRepresentationOptions)),
-      'procedure': (x) => x.procedure.includes(target.value),
-      'doctor': (x) => x.doctor.includes(target.value)
+    const comparators: {[index: string]: any} = {
+      'date': (x: any) => x.date.includes(new Date(target.value).toLocaleString('ru-RU', timeRepresentationOptions)),
+      'procedure': (x: any) => x.procedure.includes(target.value),
+      'doctor': (x: any) => x.doctor.includes(target.value)
     }
     setRecords(records.filter(comparators[target.name]))
   }
