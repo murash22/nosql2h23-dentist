@@ -3,7 +3,7 @@ import { ReactElement, FormEventHandler, MouseEventHandler } from "react";
 interface FilterCardProps {
   onChange: FormEventHandler<HTMLDivElement> | undefined,
   dropFilter: MouseEventHandler<HTMLButtonElement> | undefined,
-  children: Array<ReactElement>,
+  children: Array<ReactElement> | ReactElement,
   theme: "primary" | "secondary",
 }
 

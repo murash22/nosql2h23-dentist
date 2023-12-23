@@ -3,7 +3,7 @@ import {ReactElement} from "react";
 interface RecordsStandProps {
   name: string,
   theme: "primary" | "secondary",
-  children: Array<ReactElement>
+  children: Array<ReactElement> | ReactElement
 }
 
 function RecordsStand({name, theme, children}: RecordsStandProps) {

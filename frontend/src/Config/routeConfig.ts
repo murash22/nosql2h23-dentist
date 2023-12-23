@@ -3,7 +3,8 @@ export enum AppRoutes {
   WELCOME = "welcome",
   // REGISTER = "register",
   LOGIN = "login",
-  PATIENT = "patient"
+  PATIENT = "patient",
+  DOCTOR = "doctor"
   // FEED = "feed",
   // POST = "post",
   // NOT_FOUND = "notFound",
@@ -26,7 +27,8 @@ export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.WELCOME]: '/' + AppRoutes.WELCOME,
   // [AppRoutes.REGISTER]: "/register",
   [AppRoutes.LOGIN]: "/login",
-  [AppRoutes.PATIENT]: "/patient"
+  [AppRoutes.PATIENT]: "/patient",
+  [AppRoutes.DOCTOR]: "/doctor"
   // [AppRoutes.FEED]: "/feed",
   // [AppRoutes.POST]: "/post/" + RouteParams.POST_ID,
   // [AppRoutes.NOT_FOUND]: "*",
