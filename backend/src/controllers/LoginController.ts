@@ -1,4 +1,5 @@
 import { configDotenv } from "dotenv";
+// @ts-ignore
 import express from "express";
 import { usersService } from "../services/UsersService";
 
