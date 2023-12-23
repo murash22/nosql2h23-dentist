@@ -23,8 +23,6 @@ class DoctorsService {
                 "procedure": procedure?.name,
                 "patient": patient?.name + " " + patient?.surname
             };
-    
-            console.log(appointmentDetails);
             myAppoitments.push(appointmentDetails);
         }
 
