@@ -2,14 +2,17 @@ import Header from "../../Widgets/Header/Header.tsx";
 import LoginButton from "../../Components/LoginButton/LoginButton.tsx";
 import FormCard from "../../Components/FormCard/FormCard.tsx";
 import FormInput from "../../Components/FormInput/FormInput.tsx";
-import {FormEvent, useState} from "react";
+import {Dispatch, FormEvent, useState} from "react";
 import { loginRequest } from "../../api/requests.ts";
 import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {UnknownAction} from "redux";
 
 
 function LoginPage() {
   const navigate = useNavigate()
   const [errorText, setErrorText] = useState("hidden")
+  const dispatch: Dispatch<UnknownAction> = useDispatch()
 
   function onSubmit(event: FormEvent) {
     event.preventDefault()
@@ -18,7 +21,8 @@ function LoginPage() {
     const password = target.password.value
     loginRequest(username, password)
       .then(res => {
-        const role = res.data
+        const {id, role} = res.data
+        dispatch({type: "", id, role})
         navigate("/" + role)
       })
       .catch((err) => {
