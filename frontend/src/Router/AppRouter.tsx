@@ -3,6 +3,7 @@ import {AppRoutes, RoutePaths} from "../Config/routeConfig.ts";
 import { Route, Routes, RouteProps } from "react-router-dom";
 import LoginPage from "../Pages/LoginPage/LoginPage.tsx";
 import PatientPage from "../Pages/PatientPage/PatientPage.tsx";
+import DoctorPage from "../Pages/DoctorPage/DoctorPage.tsx";
 
 const routes: Record<AppRoutes, RouteProps> = {
   [AppRoutes.WELCOME]: {
@@ -21,6 +22,10 @@ const routes: Record<AppRoutes, RouteProps> = {
     path: RoutePaths.patient,
     element: <PatientPage />,
   },
+  [AppRoutes.DOCTOR]: {
+    path: RoutePaths.doctor,
+    element: <DoctorPage />
+  }
   // [AppRoutes.FEED]: {
   //   path: RoutePaths.feed,
   //   element: <>Feed</>,
