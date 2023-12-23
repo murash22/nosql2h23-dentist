@@ -2,15 +2,15 @@ import {createStore} from "redux"
 
 
 const defaultState = {
-  id: "12",
-  role: "21",
+  id: "",
+  role: "",
   data: {}
 }
 
 const reducer = (state = defaultState, action: any) => {
   switch (action.type) {
-    case "":
-      return {...state, role: state.role, id: state.id}
+    case "INIT_ROLE_ID":
+      return {...state, role: action.role, id: action.id}
     default:
       return state
   }

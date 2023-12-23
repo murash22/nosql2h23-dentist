@@ -1,5 +1,6 @@
 // Перечисление роутов
 export enum AppRoutes {
+  MAIN = "main",
   WELCOME = "welcome",
   // REGISTER = "register",
   LOGIN = "login",
@@ -16,14 +17,11 @@ export enum AppRoutes {
 // метода replace менять на параметр сущности.
 // Пример:
 // RoutePaths.user.replace(RouteParams.USERNAME, username)
-export enum RouteParams {
-  POST_ID = ":id",
-  USERNAME = ":username",
-}
 
 export const RoutePaths: Record<AppRoutes, string> = {
   // Будем отрисовывать профиль в зависимости от параметра.
   // Если на беке не найдётся юзер, то кинем на 404.
+  [AppRoutes.MAIN]: "/",
   [AppRoutes.WELCOME]: '/' + AppRoutes.WELCOME,
   // [AppRoutes.REGISTER]: "/register",
   [AppRoutes.LOGIN]: "/login",

@@ -12,8 +12,16 @@ export const loginRequest = (username: string, password: string): Promise<AxiosR
     "password": password
   }
   return axios({
-    url: API_URL + Endpoints.login,
+    url: API_URL + Endpoints.LOGIN,
     method: 'POST',
     data
+  })
+}
+
+
+export const getDoctorById = (id: string) => {
+  return axios({
+    url: API_URL + Endpoints.GET_DOCTOR_BY_ID + "/" + id,
+    method: 'GET',
   })
 }
