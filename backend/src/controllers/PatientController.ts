@@ -13,4 +13,16 @@ export class PatientController {
             }
         }
     }
+
+    static async getAllPatients(req: express.Request, res: express.Response) {
+        try {
+            const patient = await patientService.getAllPatients()
+
+            res.json(patient)
+        } catch (error) {
+            if (error instanceof Error) {
+                res.status(400).send(error.message)
+            }
+        }
+    }
 }

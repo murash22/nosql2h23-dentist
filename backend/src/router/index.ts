@@ -11,8 +11,7 @@ router.post('/login', LoginController.login)
 router.get('/doctors/:id', DoctorController.getDoctorById)
 
 router.get('/patients/:id', PatientController.getPatientById)
-
-router.get('/admins/', AdminController.getAdminInfo)
+router.get('/patients', PatientController.getAllPatients)
 
 
 export default router;

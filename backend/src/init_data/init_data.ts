@@ -66,9 +66,9 @@ class DataInitializer {
         const patientIds: Types.ObjectId[] = patientUsers.map(patient => patient._id!) as Types.ObjectId[];
 
         const testData: PatientDto[] = [
-            { _id: patientIds[0], name: "Максим", surname: "Тишкин", email: "patient@example.com", birthdate: "22.08.2002", contact: "987654321", bloodgroup: "A+" },
-            { _id: patientIds[1], name: "Саша", surname: "Морозов", email: "patient@example.com", birthdate: "22.08.2002", contact: "987654321", bloodgroup: "A+" },
-            { _id: patientIds[2], name: "Миша", surname: "Переверза", email: "patient@example.com", birthdate: "22.08.2002", contact: "987654321", bloodgroup: "A+" },
+            { _id: patientIds[0], name: "Максим", surname: "Тишкин", email: "patient@example.com", birthdate: "22.08.2002", contact: "987654321", bloodgroup: "A+", card: "0001" },
+            { _id: patientIds[1], name: "Саша", surname: "Морозов", email: "patient@example.com", birthdate: "22.08.2002", contact: "987654321", bloodgroup: "A+", card: "0002"  },
+            { _id: patientIds[2], name: "Миша", surname: "Переверза", email: "patient@example.com", birthdate: "22.08.2002", contact: "987654321", bloodgroup: "A+", card: "0003"  },
         ];
 
         await PatientsMongoCollection.insertMany(testData);

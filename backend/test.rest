@@ -13,3 +13,7 @@ GET http://localhost:1234/api/doctors/658705e53b786ef1006e04f9
 ###
 
 GET http://localhost:1234/api/patients/658705e53b786ef1006e04fb
+
+###
+
+GET http://localhost:1234/api/patients

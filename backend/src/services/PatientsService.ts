@@ -30,6 +30,38 @@ class PatientService {
         
         return { "name": patient?.name, "surname": patient?.surname,  "appoitments": myAppoitments}
     }
+
+    public async getAllPatients() {
+        const patients = await PatientsMongoCollection.find({})
+        console.log(patients);
+        
+        const prettyPatients: { [key: string]: any }[] = []
+        patients.forEach(patient => {
+            const name = patient.name + " " + patient.surname
+            const age = this.calculateAge(patient.birthdate)
+            const card = patient.card
+            const phone = patient.contact
+            prettyPatients.push({
+                "name": name,
+                "age": age,
+                "card": card,
+                "phone": phone
+            })
+        });
+        console.log(prettyPatients);
+        
+        return prettyPatients
+    }
+
+    private calculateAge(date: string): number {
+        const [day, month, year] = date.split(".")
+        const birthdate = new Date(`${year}-${month}-${day}`)
+        const currentDate = new Date()
+        const timediff = currentDate.getTime() - birthdate.getTime()
+        const age = Math.floor(timediff / (365.25 * 24 * 60 * 60 * 1000));
+        return age
+
+    }
 }
 
 export const patientService = new PatientService()
