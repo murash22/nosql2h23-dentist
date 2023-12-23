@@ -17,7 +17,9 @@ export default {
       white: "#FFFFFF",
       darkPurple: "#202660",
       additional: "#A7D7C5",
-      black: "#000000"
+      black: "#000000",
+      red: "#FF0000"
+
     }
   },
   plugins: [],

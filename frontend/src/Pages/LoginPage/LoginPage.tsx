@@ -2,17 +2,31 @@ import Header from "../../Widgets/Header/Header.tsx";
 import LoginButton from "../../Components/LoginButton/LoginButton.tsx";
 import FormCard from "../../Components/FormCard/FormCard.tsx";
 import FormInput from "../../Components/FormInput/FormInput.tsx";
-import { FormEvent } from "react";
+import {FormEvent, useState} from "react";
+import { loginRequest } from "../../api/requests.ts";
+import {useNavigate} from "react-router-dom";
 
 
 function LoginPage() {
+  const navigate = useNavigate()
+  const [errorText, setErrorText] = useState("hidden")
 
   function onSubmit(event: FormEvent) {
     event.preventDefault()
     const target: any = event.target
-    console.log(target.username.value)
-    console.log(target.password.value)
+    const username = target.username.value
+    const password = target.password.value
+    loginRequest(username, password)
+      .then(res => {
+        const role = res.data
+        navigate("/" + role)
+      })
+      .catch((err) => {
+        console.log(err.message)
+        setErrorText("")
+      })
   }
+
   return (
     <>
       <Header />
@@ -26,7 +40,7 @@ function LoginPage() {
           <h2 className="leading-relaxed text-6xl text-base1 font-semibold">
             LOG IN
           </h2>
-          <form action="/welcome" onSubmit={onSubmit} className="flex h-64 flex-col justify-between mt-16">
+          <form onSubmit={onSubmit} className="flex h-64 flex-col justify-between mt-16">
             <FormInput name={"username"}
                        placeholder={"Username"}
                        required={true}
@@ -35,6 +49,9 @@ function LoginPage() {
                        placeholder={"Password"}
                        required={true}
                        autoComplete={"off"} />
+            <div className={`${errorText} text-red text-opacity-70 italic self-start`}>
+              Invalid username or password!
+            </div>
             <div>
               <LoginButton theme="primary" children="Log in" type="submit"></LoginButton>
             </div>
