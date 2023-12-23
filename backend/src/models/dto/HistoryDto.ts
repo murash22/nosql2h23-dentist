@@ -4,9 +4,9 @@ export class HistoryDto {
     constructor(
         readonly _id: Types.ObjectId,
         readonly date: string,
-        readonly patient_id: string,
-        readonly procedure_id: string,
-        readonly doctor_id: string,
+        readonly patient_id: Types.ObjectId,
+        readonly procedure_id: Types.ObjectId,
+        readonly doctor_id: Types.ObjectId,
         readonly helped: boolean,
     ) {}
 }

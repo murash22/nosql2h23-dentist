@@ -7,6 +7,6 @@ const ProcedureSchema = new Schema({
 })
 
 export const ProceduresMongoCollection = model(
-    "Users", 
+    "Procedures", 
     ProcedureSchema
 )
