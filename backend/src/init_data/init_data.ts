@@ -66,9 +66,9 @@ class DataInitializer {
         const patientIds: Types.ObjectId[] = patientUsers.map(patient => patient._id!) as Types.ObjectId[];
 
         const testData: PatientDto[] = [
-            { _id: patientIds[0], name: "Максим", surname: "Тишкин", email: "patient@example.com", birthdate: "22.08.2002", contact: "987654321", bloodgroup: "A+", card: "0001" },
-            { _id: patientIds[1], name: "Саша", surname: "Морозов", email: "patient@example.com", birthdate: "22.08.2002", contact: "987654321", bloodgroup: "A+", card: "0002"  },
-            { _id: patientIds[2], name: "Миша", surname: "Переверза", email: "patient@example.com", birthdate: "22.08.2002", contact: "987654321", bloodgroup: "A+", card: "0003"  },
+            { _id: patientIds[0], name: "Максим", surname: "Тишкин", email: "patient@example.com", birthdate: "22.08.2002", contact: "88005553535", bloodgroup: "A+", card: "0001" },
+            { _id: patientIds[1], name: "Саша", surname: "Морозов", email: "patient@example.com", birthdate: "22.08.2002", contact: "88219876532", bloodgroup: "A+", card: "0002"  },
+            { _id: patientIds[2], name: "Миша", surname: "Переверза", email: "patient@example.com", birthdate: "22.08.2002", contact: "89638527415", bloodgroup: "A+", card: "0003"  },
         ];
 
         await PatientsMongoCollection.insertMany(testData);
@@ -85,9 +85,9 @@ class DataInitializer {
         const doctorId = new Types.ObjectId(String(doctorUser?._id))
 
         const testData: AppoitmentDto[] = [
-            { _id: new mongoose.Types.ObjectId(), date: "01/01/2024, 00:00-08:00", procedure_id: procedureId, patient_id: patientIds[0], doctor_id: doctorId },
-            { _id: new mongoose.Types.ObjectId(), date: "02/01/2024, 00:00-08:00", procedure_id: procedureId, patient_id: patientIds[1], doctor_id: doctorId },
-            { _id: new mongoose.Types.ObjectId(), date: "03/01/2024, 00:00-08:00", procedure_id: procedureId, patient_id: patientIds[2], doctor_id: doctorId },
+            { _id: new mongoose.Types.ObjectId(), date: "01.01.2024, 11:00", procedure_id: procedureId, patient_id: patientIds[0], doctor_id: doctorId },
+            { _id: new mongoose.Types.ObjectId(), date: "02.01.2024, 11:00", procedure_id: procedureId, patient_id: patientIds[1], doctor_id: doctorId },
+            { _id: new mongoose.Types.ObjectId(), date: "03.01.2024, 11:00", procedure_id: procedureId, patient_id: patientIds[2], doctor_id: doctorId },
         ];
 
         await AppoitmentMongoCollection.insertMany(testData);

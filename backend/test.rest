@@ -2,13 +2,13 @@ POST http://localhost:1234/api/login
 Content-Type: application/json
 
 {
-    "login": "admin",
-    "password": "admin"
+    "login": "doctor",
+    "password": "doctor"
 }
 
 ###
 
-GET http://localhost:1234/api/doctors/658705e53b786ef1006e04f9
+GET http://localhost:1234/api/doctors/658712e411893f7cb9895a64
 
 ###
 
