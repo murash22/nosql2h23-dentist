@@ -8,7 +8,7 @@ const router = Router();
 
 router.post('/login', LoginController.login)
 
-router.get('/doctors/', DoctorController.getDoctorsInfo)
+router.get('/doctors/:id', DoctorController.getDoctorById)
 
 router.get('/patients/', PatientController.getPatientInfo)
 

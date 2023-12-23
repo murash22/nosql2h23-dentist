@@ -6,3 +6,6 @@ Content-Type: application/json
     "password": "admin"
 }
 
+###
+
+GET http://localhost:1234/api/doctors/6586fe604d2527dccc46e86f

@@ -23,7 +23,9 @@ class DataInitializer {
         const testData: UserDto[] = [
             { _id: new mongoose.Types.ObjectId(), login: "admin", password: "admin", role: "admin" },
             { _id: new mongoose.Types.ObjectId(),  login: "doctor", password: "doctor", role: "doctor" },
-            { _id: new mongoose.Types.ObjectId(), login: "patient", password: "patient", role: "patient" }
+            { _id: new mongoose.Types.ObjectId(), login: "patient", password: "patient", role: "patient" },
+            { _id: new mongoose.Types.ObjectId(), login: "patient2", password: "patient", role: "patient" },
+            { _id: new mongoose.Types.ObjectId(), login: "patient3", password: "patient", role: "patient" },
         ];
         await UsersMongoCollection.insertMany(testData);
     }
@@ -59,11 +61,14 @@ class DataInitializer {
     }
 
     public async initializePatients(): Promise<void> {
-        const patientUser = await UsersMongoCollection.findOne({login: "patient"}).exec()
-        const patientId = new Types.ObjectId(String(patientUser?._id))
+        const patientUsers = await UsersMongoCollection.find({ role: "patient" });
+
+        const patientIds: Types.ObjectId[] = patientUsers.map(patient => patient._id!) as Types.ObjectId[];
 
         const testData: PatientDto[] = [
-            { _id: patientId, name: "Максим", surname: "Тишкин", email: "patient@example.com", birthdate: "22.08.2002", contact: "987654321", bloodgroup: "A+" },
+            { _id: patientIds[0], name: "Максим", surname: "Тишкин", email: "patient@example.com", birthdate: "22.08.2002", contact: "987654321", bloodgroup: "A+" },
+            { _id: patientIds[1], name: "Саша", surname: "Морозов", email: "patient@example.com", birthdate: "22.08.2002", contact: "987654321", bloodgroup: "A+" },
+            { _id: patientIds[2], name: "Миша", surname: "Переверза", email: "patient@example.com", birthdate: "22.08.2002", contact: "987654321", bloodgroup: "A+" },
         ];
 
         await PatientsMongoCollection.insertMany(testData);
@@ -73,14 +78,16 @@ class DataInitializer {
         const procedure = await ProceduresMongoCollection.findOne({name: "Кариес"}).exec()
         const procedureId = new Types.ObjectId(String(procedure?._id))
 
-        const patientUser = await UsersMongoCollection.findOne({login: "patient"}).exec()
-        const patientId = new Types.ObjectId(String(patientUser?._id))
+        const patientUsers = await UsersMongoCollection.find({ role: "patient" });
+        const patientIds: Types.ObjectId[] = patientUsers.map(patient => patient._id!) as Types.ObjectId[];
 
         const doctorUser = await UsersMongoCollection.findOne({login: "doctor"}).exec()
         const doctorId = new Types.ObjectId(String(doctorUser?._id))
 
         const testData: AppoitmentDto[] = [
-            { _id: new mongoose.Types.ObjectId(), date: "22.12.2023", procedure_id: procedureId, patient_id: patientId, doctor_id: doctorId },
+            { _id: new mongoose.Types.ObjectId(), date: "01/01/2024, 00:00-08:00", procedure_id: procedureId, patient_id: patientIds[0], doctor_id: doctorId },
+            { _id: new mongoose.Types.ObjectId(), date: "02/01/2024, 00:00-08:00", procedure_id: procedureId, patient_id: patientIds[1], doctor_id: doctorId },
+            { _id: new mongoose.Types.ObjectId(), date: "03/01/2024, 00:00-08:00", procedure_id: procedureId, patient_id: patientIds[2], doctor_id: doctorId },
         ];
 
         await AppoitmentMongoCollection.insertMany(testData);
