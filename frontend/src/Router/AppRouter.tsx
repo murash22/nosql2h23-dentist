@@ -6,6 +6,10 @@ import PatientPage from "../Pages/PatientPage/PatientPage.tsx";
 import DoctorPage from "../Pages/DoctorPage/DoctorPage.tsx";
 
 const routes: Record<AppRoutes, RouteProps> = {
+  [AppRoutes.MAIN]: {
+    path: RoutePaths.main,
+    element: <WelcomePage/>
+  },
   [AppRoutes.WELCOME]: {
     path: RoutePaths.welcome,
     element: <WelcomePage />,

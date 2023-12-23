@@ -22,7 +22,7 @@ function LoginPage() {
     loginRequest(username, password)
       .then(res => {
         const {id, role} = res.data
-        dispatch({type: "", id, role})
+        dispatch({type: "INIT_ROLE_ID", id, role})
         navigate("/" + role)
       })
       .catch((err) => {

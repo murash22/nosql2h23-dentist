@@ -1,4 +1,5 @@
 
 export enum Endpoints {
-  login = "login",
+  LOGIN = "login",
+  GET_DOCTOR_BY_ID = "doctors"
 }
