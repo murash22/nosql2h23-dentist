@@ -1,61 +1,56 @@
 import Header from "../../Widgets/Header/Header.tsx";
-import ProfileButton from "../../Components/ProfileButton/ProfileButton.tsx";
 import SignOutButton from "../../Components/SignOutButton/SignOutButton.tsx";
 import FormInput from "../../Components/FormInput/FormInput.tsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import FilterCard from "../../Widgets/FilterCard/FilterCard.tsx";
 import RecordsStand from "../../Widgets/RecordsStand/RecordsStand.tsx";
+import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {getPatientById} from "../../api/requests.ts";
 import {timeRepresentationOptions} from "../../Config/timeRepresentationConfig.ts";
 
-
-const person = {
-  name: "Patient1",
-  appointments: [
-    {
-      id: 1,
-      date: "22.12.2023, 15:54",
-      doctor: "Doctor Doolittle",
-      procedure: "Procedure 1"
-    },
-    {
-      id: 2,
-      date: "20.12.2012, 11:00",
-      doctor: "Doctor Aybolit",
-      procedure: "Procedure 2"
-    },
-    {
-      id: 3,
-      date: "20.12.2022, 06:00",
-      doctor: "Doctor A",
-      procedure: "Procedure 2"
-    }
-  ]
-}
-
 function PatientPage() {
-  const gridCol3 = "w-full grid grid-cols-3 justify-items-center"
 
-  const [records, setRecords] = useState(person.appointments)
+  let tmp: any = {}
+  const [info, setInfo] = useState(tmp)
+  const navigate = useNavigate()
+  const id = useSelector((state: any) => state.id)
+  const [appointments, setAppointments] = useState([])
+  useEffect(() => {
+    if (!id) navigate("/")
+    getPatientById(id)
+      .then(res => {
+        console.log(id, res)
+        setInfo(res.data)
+        setAppointments(res.data.appointments)
+      })
+      .catch(err => {
+        console.log(err.message)
+        navigate("/welcome")
+      })
+  }, []);
 
   const onChange = (event: any) => {
     const target = event.target
     const comparators: {[index: string]: any} = {
-      'date': (x: any) => x.date.includes(new Date(target.value).toLocaleString('ru-RU', timeRepresentationOptions)),
+      'date': (x: any) => x.date == (new Date(target.value).toLocaleString('ru-RU', timeRepresentationOptions)),
       'procedure': (x: any) => x.procedure.includes(target.value),
       'doctor': (x: any) => x.doctor.includes(target.value)
     }
-    setRecords(records.filter(comparators[target.name]))
+    setAppointments(appointments.filter(comparators[target.name]))
   }
 
   const dropFilter = () => {
-    setRecords(person.appointments)
+    setAppointments(info.appointments)
   }
+
+  const gridCol3 = "w-full grid grid-cols-3 justify-items-center"
 
   return (
     <>
-      <Header profileButton={<ProfileButton/>} signOutButton={<SignOutButton/>} />
+      <Header signOutButton={<SignOutButton/>} />
       <div className="px-14 font-bold min-w-fit">
-        <h3 className="text-2xl my-7">Hello, <span className="text-base1">{person.name}</span>!</h3>
+        <h3 className="text-2xl my-7">Hello, <span className="text-base1">{info.name}</span>!</h3>
         <FilterCard theme="primary" onChange={onChange} dropFilter={dropFilter}>
           <div>
             <label htmlFor="" className="block ml-3">Date</label>
@@ -77,7 +72,7 @@ function PatientPage() {
             <h4>Doctor</h4>
           </div>
           <ul className="w-full">
-            {records.map((currentValue, idx) =>
+            {appointments.map((currentValue: any, idx) =>
               <div key={idx}  className={`${gridCol3} text-lg font-medium mb-7`}>
                 <li>{currentValue.date}</li>
                 <li>{currentValue.procedure}</li>

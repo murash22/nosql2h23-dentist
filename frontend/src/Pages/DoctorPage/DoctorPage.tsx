@@ -11,7 +11,8 @@ import {useNavigate} from "react-router-dom";
 
 
 function DoctorPage() {
-  const [info, setInfo] = useState({})
+  let tmp: any = {}
+  const [info, setInfo] = useState(tmp)
   const navigate = useNavigate()
   const id = useSelector((state: any) => state.id)
   const [appointments, setAppointments] = useState([])
@@ -31,7 +32,7 @@ function DoctorPage() {
   const onChange = (event: any) => {
     const target = event.target
     const comparators: {[index: string]: any} = {
-      'date': (x: any) => x.date.includes(new Date(target.value).toLocaleString('ru-RU', timeRepresentationOptions)),
+      'date': (x: any) => x.date == (new Date(target.value).toLocaleString('ru-RU', timeRepresentationOptions)),
       'procedure': (x: any) => x.procedure.includes(target.value),
       'patient': (x: any) => x.patient.includes(target.value)
     }
@@ -71,7 +72,7 @@ function DoctorPage() {
             <h4>Patient</h4>
           </div>
           <ul className="w-full">
-            {appointments.map((currentValue, idx) =>
+            {appointments.map((currentValue: any, idx) =>
               <div key={idx}  className={`${gridCol3} text-lg font-medium mb-7`}>
                 <li>{currentValue.date}</li>
                 <li>{currentValue.procedure}</li>

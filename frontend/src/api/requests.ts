@@ -25,3 +25,10 @@ export const getDoctorById = (id: string) => {
     method: 'GET',
   })
 }
+
+export const getPatientById = (id: string) => {
+  return axios({
+    url: API_URL + Endpoints.GET_PATIENTS + "/" + id,
+    method: "GET"
+  })
+}

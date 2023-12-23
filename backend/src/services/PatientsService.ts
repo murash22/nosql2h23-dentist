@@ -9,14 +9,14 @@ class PatientService {
         const objId = new mongoose.Types.ObjectId(id)
         const patient = await PatientsMongoCollection.findById(objId)
 
-        const appoitments = await AppoitmentMongoCollection.find({patient_id: objId})
+        const appointments = await AppoitmentMongoCollection.find({patient_id: objId})
 
-        let myAppoitments: { [key: string]: any }[] = [];
+        let myAppointments: { [key: string]: any }[] = [];
 
-        for(const appoitment of appoitments) {
-            const procedure = await ProceduresMongoCollection.findOne({_id: appoitment?.procedure_id})
-            const doctor = await DoctorMongoCollection.findOne({_id: appoitment?.doctor_id})
-            const date = appoitment?.date
+        for(const appointment of appointments) {
+            const procedure = await ProceduresMongoCollection.findOne({_id: appointment?.procedure_id})
+            const doctor = await DoctorMongoCollection.findOne({_id: appointment?.doctor_id})
+            const date = appointment?.date
             const appointmentDetails = {
                 "date": date,
                 "procedure": procedure?.name,
@@ -24,11 +24,11 @@ class PatientService {
             };
             console.log(appointmentDetails);
             
-            myAppoitments.push(appointmentDetails);
+            myAppointments.push(appointmentDetails);
         }
-        console.log({ "name": patient?.name, "surname": patient?.surname,  "appoitments": myAppoitments});
+        console.log({ "name": patient?.name, "surname": patient?.surname,  "appointments": myAppointments});
         
-        return { "name": patient?.name, "surname": patient?.surname,  "appoitments": myAppoitments}
+        return { "name": patient?.name, "surname": patient?.surname,  "appointments": myAppointments}
     }
 
     public async getAllPatients() {
