@@ -54,7 +54,7 @@ class DataInitializer {
         const doctorId = new Types.ObjectId(String(doctorUser?._id))
 
         const testData: DoctorDto[] = [
-            { _id: doctorId, name: "Ашыр", surname: "Мыратгилдиев", email: "doctor@example.com", contact: "123456789", experience: "5 years" },
+            { _id: doctorId, name: "Ашыр", surname: "Мыратгелдиев", email: "doctor@example.com", contact: "123456789", experience: "5 years" },
         ];
 
         await DoctorMongoCollection.insertMany(testData);
