@@ -8,6 +8,7 @@ export class PatientDto {
         readonly email: string,
         readonly birthdate: string,
         readonly contact: string,
+        readonly card: string,
         readonly bloodgroup: string,
     ) {}
 }

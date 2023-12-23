@@ -7,6 +7,7 @@ const PatientSchema = new Schema({
     email: { type: String, required: true },
     birthdate: { type: String, required: true},
     contact: { type: String, required: true},
+    card: { type: String, required: true},
     bloodgroup: { type: String, required: true},
 })
 

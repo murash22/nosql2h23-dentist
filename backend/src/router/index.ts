@@ -10,10 +10,8 @@ router.post('/login', LoginController.login)
 
 router.get('/doctors/:id', DoctorController.getDoctorById)
 
-router.get('/patients/', PatientController.getPatientInfo)
+router.get('/patients/:id', PatientController.getPatientById)
+router.get('/patients', PatientController.getAllPatients)
 
-router.get('/admins/', AdminController.getAdminInfo)
-
-router.get('/', LoginController.login)
 
 export default router;
