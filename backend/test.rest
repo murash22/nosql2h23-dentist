@@ -1,0 +1,11 @@
+POST http://localhost:1234/api/login
+Content-Type: application/json
+
+{
+    "login": "admin",
+    "password": "admin"
+}
+
+
+###
+
