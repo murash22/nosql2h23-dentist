@@ -8,7 +8,7 @@ import {useSelector} from "react-redux";
 
 function AdminPage(){
     let tmp: any = {}
-    const [setInfo] = useState(tmp)
+    const [info, setInfo] = useState(tmp)
     const navigate = useNavigate()
     const id = useSelector((state: any) => state.id)
 

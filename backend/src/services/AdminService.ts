@@ -7,7 +7,6 @@ import {DoctorMongoCollection} from "../models/mongoose/DoctorModel";
 
 class AdminService {
     public async getAdminById(id: string) {
-        const objId = new mongoose.Types.ObjectId(id)
 
         const appointments = await AppoitmentMongoCollection.find({})
 
