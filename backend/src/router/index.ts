@@ -13,5 +13,6 @@ router.get('/doctors/:id', DoctorController.getDoctorById)
 router.get('/patients/:id', PatientController.getPatientById)
 router.get('/patients', PatientController.getAllPatients)
 
+router.get('/appointments', AdminController.getAppointments)
 
 export default router;

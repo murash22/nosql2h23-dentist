@@ -5,7 +5,8 @@ export enum AppRoutes {
   // REGISTER = "register",
   LOGIN = "login",
   PATIENT = "patient",
-  DOCTOR = "doctor"
+  DOCTOR = "doctor",
+  ADMIN = "admin"
   // FEED = "feed",
   // POST = "post",
   // NOT_FOUND = "notFound",
@@ -26,7 +27,8 @@ export const RoutePaths: Record<AppRoutes, string> = {
   // [AppRoutes.REGISTER]: "/register",
   [AppRoutes.LOGIN]: "/login",
   [AppRoutes.PATIENT]: "/patient",
-  [AppRoutes.DOCTOR]: "/doctor"
+  [AppRoutes.DOCTOR]: "/doctor",
+  [AppRoutes.ADMIN]: "/admin"
   // [AppRoutes.FEED]: "/feed",
   // [AppRoutes.POST]: "/post/" + RouteParams.POST_ID,
   // [AppRoutes.NOT_FOUND]: "*",
