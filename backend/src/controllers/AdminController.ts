@@ -3,9 +3,9 @@ import express from "express";
 import {adminService} from "../services/AdminService";
 
 export class AdminController {
-    static async getAdminById(req: express.Request, res: express.Response) {
+    static async getAppointments(req: express.Request, res: express.Response) {
         try {
-            const admin = await adminService.getAdminById(req.params.id)
+            const admin = await adminService.getAppointments(req.params.id)
 
             res.json(admin)
         } catch (error) {

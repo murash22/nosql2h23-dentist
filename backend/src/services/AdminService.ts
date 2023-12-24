@@ -6,7 +6,7 @@ import {PatientsMongoCollection} from "../models/mongoose/PatientModel";
 import {DoctorMongoCollection} from "../models/mongoose/DoctorModel";
 
 class AdminService {
-    public async getAdminById(id: string) {
+    public async getAppointments(id: string) {
 
         const appointments = await AppoitmentMongoCollection.find({})
 
