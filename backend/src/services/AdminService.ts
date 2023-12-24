@@ -1,5 +1,3 @@
-import mongoose from "mongoose";
-import {AdminsMongoCollection} from "../models/mongoose/AdminModel";
 import {AppoitmentMongoCollection} from "../models/mongoose/AppoitmentModel";
 import {ProceduresMongoCollection} from "../models/mongoose/ProcedureModel";
 import {PatientsMongoCollection} from "../models/mongoose/PatientModel";

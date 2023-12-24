@@ -35,18 +35,6 @@ const routes: Record<AppRoutes, RouteProps> = {
     path: RoutePaths.admin,
     element: <AdminPage />
   }
-  // [AppRoutes.FEED]: {
-  //   path: RoutePaths.feed,
-  //   element: <>Feed</>,
-  // },
-  // [AppRoutes.POST]: {
-  //   path: RoutePaths.post,
-  //   element: <>Post page</>,
-  // },
-  // [AppRoutes.NOT_FOUND]: {
-  //   path: RoutePaths.notFound,
-  //   element: <>404 not found</>,
-  // },
 };
 
 export default function AppRouter() {
