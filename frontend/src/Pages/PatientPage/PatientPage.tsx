@@ -7,7 +7,6 @@ import RecordsStand from "../../Widgets/RecordsStand/RecordsStand.tsx";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {getPatientById} from "../../api/requests.ts";
-import {timeRepresentationOptions} from "../../Config/timeRepresentationConfig.ts";
 
 function PatientPage() {
 
@@ -30,18 +29,18 @@ function PatientPage() {
       })
   }, []);
 
-  const onChange = (event: any) => {
-    const target = event.target
-    const comparators: {[index: string]: any} = {
-      'date': (x: any) => x.date == (new Date(target.value).toLocaleString('ru-RU', timeRepresentationOptions)),
-      'procedure': (x: any) => x.procedure.includes(target.value),
-      'doctor': (x: any) => x.doctor.includes(target.value)
-    }
-    setAppointments(appointments.filter(comparators[target.name]))
+  const [filter, setFilter] = useState('')
+  const dropFilter = () => {
+    setFilter('')
+    setAppointments(info.appointments)
   }
 
-  const dropFilter = () => {
-    setAppointments(info.appointments)
+  const onChange = (e: any) => {
+    const value: any = e.target.value
+    // @ts-ignore
+    setFilter(value)
+    const tmp = info.appointments.filter((x: any) => x.date.includes(value) || x.procedure.includes(value) || x.doctor.includes(value))
+    setAppointments(tmp)
   }
 
   const gridCol3 = "w-full grid grid-cols-3 justify-items-center"
@@ -51,19 +50,8 @@ function PatientPage() {
       <Header signOutButton={<SignOutButton/>} />
       <div className="px-14 font-bold min-w-fit">
         <h3 className="text-2xl my-7">Hello, <span className="text-base1">{info.name}</span>!</h3>
-        <FilterCard theme="primary" onChange={onChange} dropFilter={dropFilter}>
-          <div>
-            <label htmlFor="" className="block ml-3">Date</label>
-            <FormInput name={"date"} type="datetime-local"/>
-          </div>
-          <div>
-            <label htmlFor="" className="block ml-3">Procedure</label>
-            <FormInput name={"procedure"} placeholder="Name"/>
-          </div>
-          <div>
-            <label htmlFor="" className="block ml-3">Doctor</label>
-            <FormInput name={"doctor"} placeholder="Name"/>
-          </div>
+        <FilterCard theme="primary" dropFilter={dropFilter} onChange={onChange} >
+          <FormInput name={"filter_input"} type="text" value={filter} />
         </FilterCard>
         <RecordsStand name={"Upcoming Appointments"} theme={"primary"}>
           <div className={`${gridCol3} text-2xl my-4`}>

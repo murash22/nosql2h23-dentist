@@ -15,7 +15,7 @@ function FilterCard({onChange, children, dropFilter, theme}: FilterCardProps) {
   return (
     <>
       <div className={`${bgStyle[theme]} rounded-3xl py-4 px-10 my-4`}>
-        <h2 className="text-2xl">Filter by</h2>
+        <h2 className="text-2xl">Filter</h2>
         <div className="flex justify-between mt-6 mb-3 text-xl" onChange={onChange}>
           {children}
         </div>
