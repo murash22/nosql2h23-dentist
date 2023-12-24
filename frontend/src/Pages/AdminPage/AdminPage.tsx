@@ -8,7 +8,7 @@ import {useSelector} from "react-redux";
 
 function AdminPage(){
     let tmp: any = {}
-    const [info, setInfo] = useState(tmp)
+    const [setInfo] = useState(tmp)
     const navigate = useNavigate()
     const id = useSelector((state: any) => state.id)
 
@@ -26,7 +26,7 @@ function AdminPage(){
    return <>
         <Header signOutButton={<SignOutButton />} />
         <div className="px-14 font-bold min-w-fit">
-                <h3 className="text-2xl my-7">Hello, <span className="text-base1">{info.name} {info.surname}</span>!</h3>
+                <h3 className="text-2xl my-7">Hello!</h3>
         </div>
     </>
 }

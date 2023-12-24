@@ -17,3 +17,7 @@ GET http://localhost:1234/api/patients/658705e53b786ef1006e04fb
 ###
 
 GET http://localhost:1234/api/patients
+
+###
+
+GET http://localhost:1234/api/admin/65880207e075c93418fd6619
