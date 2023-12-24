@@ -32,3 +32,9 @@ export const getPatientById = (id: string) => {
     method: "GET"
   })
 }
+export const getAdminById = (id: string) => {
+  return axios({
+    url: API_URL + Endpoints.GET_ADMIN + "/" + id,
+    method: "GET"
+  })
+}
